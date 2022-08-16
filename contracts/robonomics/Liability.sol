@@ -1,7 +1,7 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.8.0;
 
-import 'openzeppelin-solidity/contracts/cryptography/ECDSA.sol';
-import 'openzeppelin-solidity/contracts/token/ERC20/SafeERC20.sol';
+import 'openzeppelin-solidity/contracts/utils/cryptography/ECDSA.sol';
+import 'openzeppelin-solidity/contracts/token/ERC20/utils/SafeERC20.sol';
 
 import './interface/ILiability.sol';
 import './interface/IValidator.sol';

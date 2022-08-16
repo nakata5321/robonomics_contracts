@@ -1,6 +1,6 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.8.0;
 
-import 'openzeppelin-solidity/contracts/drafts/SignatureBouncer.sol';
+import './SignatureBouncer.sol';
 
 import './AbstractAmbix.sol';
 

@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.8.0;
 
 contract AbstractENS {
     function owner(bytes32 _node) public view returns(address);

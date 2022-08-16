@@ -1,9 +1,9 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.8.0;
 
-import 'openzeppelin-solidity/contracts/drafts/SignatureBouncer.sol';
-import 'openzeppelin-solidity/contracts/token/ERC20/ERC20Burnable.sol';
-import 'openzeppelin-solidity/contracts/token/ERC20/SafeERC20.sol';
-import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
+import './SignatureBouncer.sol';
+import 'openzeppelin-solidity/contracts/token/ERC20/extensions/ERC20Burnable.sol';
+import 'openzeppelin-solidity/contracts/token/ERC20/utils/SafeERC20.sol';
+import 'openzeppelin-solidity/contracts/access/Ownable.sol';
 
 
 /// @title Dutch auction contract - distribution of XRT tokens using an auction.

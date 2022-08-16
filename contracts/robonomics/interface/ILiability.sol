@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.8.0;
 
 /**
  * @title Standard liability smart contract interface
@@ -105,7 +105,7 @@ contract ILiability {
         uint256 _deadline,
         address _sender,
         bytes   calldata _signature
-    ) external returns (bool);
+    ) virtual external returns (bool);
 
     /**
      * @dev Deserialize robonomics offer message
@@ -126,7 +126,7 @@ contract ILiability {
         uint256 _deadline,
         address _sender,
         bytes   calldata _signature
-    ) external returns (bool);
+    )virtual external returns (bool);
 
     /**
      * @dev Finalize liability contract
@@ -139,5 +139,5 @@ contract ILiability {
         bytes calldata _result,
         bool  _success,
         bytes calldata _signature
-    ) external returns (bool);
+    ) virtual external returns (bool);
 }

@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.8.0;
 
 import './ILiability.sol';
 import './ILighthouse.sol';
@@ -51,7 +51,7 @@ contract IFactory {
      * @dev XRT emission value for consumed gas
      * @param _gas Gas consumed by robonomics program
      */
-    function wnFromGas(uint256 _gas) public view returns (uint256);
+    function wnFromGas(uint256 _gas) virtual public view returns (uint256);
 
     /**
      * @dev Create lighthouse smart contract
@@ -64,7 +64,7 @@ contract IFactory {
         uint256 _minimalStake,
         uint256 _timeoutInBlocks,
         string calldata _name
-    ) external returns (ILighthouse);
+    ) virtual external returns (ILighthouse);
 
     /**
      * @dev Create robot liability smart contract
@@ -75,7 +75,7 @@ contract IFactory {
     function createLiability(
         bytes calldata _demand,
         bytes calldata _offer
-    ) external returns (ILiability);
+    )virtual external returns (ILiability);
 
     /**
      * @dev Is called after liability creation
@@ -83,7 +83,7 @@ contract IFactory {
      * @param _start_gas Transaction start gas level
      * @notice This method is for lighthouse contract use only
      */
-    function liabilityCreated(ILiability _liability, uint256 _start_gas) external returns (bool);
+    function liabilityCreated(ILiability _liability, uint256 _start_gas)virtual external returns (bool);
 
     /**
      * @dev Is called after liability finalization
@@ -91,5 +91,5 @@ contract IFactory {
      * @param _start_gas Transaction start gas level
      * @notice This method is for lighthouse contract use only
      */
-    function liabilityFinalized(ILiability _liability, uint256 _start_gas) external returns (bool);
+    function liabilityFinalized(ILiability _liability, uint256 _start_gas)virtual  external returns (bool);
 }

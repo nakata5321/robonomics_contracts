@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.8.0;
 
 /**
  * @title Robonomics lighthouse contract interface
@@ -72,13 +72,13 @@ contract ILighthouse {
      * @param _value in wn
      * @notice XRT should be approved before call this 
      */
-    function refill(uint256 _value) external returns (bool);
+    function refill(uint256 _value) virtual external returns (bool);
 
     /**
      * @dev Decrease stake and get XRT back
      * @param _value in wn
      */
-    function withdraw(uint256 _value) external returns (bool);
+    function withdraw(uint256 _value) virtual external returns (bool);
 
     /**
      * @dev Create liability smart contract assigned to this lighthouse
@@ -89,7 +89,7 @@ contract ILighthouse {
     function createLiability(
         bytes calldata _demand,
         bytes calldata _offer
-    ) external returns (bool);
+    )virtual external returns (bool);
 
     /**
      * @dev Finalize liability smart contract assigned to this lighthouse
@@ -103,5 +103,5 @@ contract ILighthouse {
         bytes calldata _result,
         bool _success,
         bytes calldata _signature
-    ) external returns (bool);
+    )virtual external returns (bool);
 }
