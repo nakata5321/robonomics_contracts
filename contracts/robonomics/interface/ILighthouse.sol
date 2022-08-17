@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 /**
  * @title Robonomics lighthouse contract interface
  */
-contract ILighthouse {
+abstract contract ILighthouse {
     /**
      * @dev Provider going online
      */

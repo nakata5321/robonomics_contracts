@@ -66,7 +66,7 @@ contract DutchAuction is SignatureBouncer, Ownable {
     modifier timedTransitions() {
         if (stage == Stages.AuctionStarted && calcTokenPrice() <= calcStopPrice())
             finalizeAuction();
-        if (stage == Stages.AuctionEnded && now > endTime + WAITING_PERIOD)
+        if (stage == Stages.AuctionEnded && block.timestamp > endTime + WAITING_PERIOD)
             stage = Stages.TradingStarted;
         _;
     }
@@ -173,7 +173,7 @@ contract DutchAuction is SignatureBouncer, Ownable {
         }
 
         // Forward funding to ether wallet
-        (bool success,) = wallet.call.value(amount)("");
+        (bool success,) = wallet.call{value: amount}("");
         require(success);
 
         bids[receiver] += amount;
@@ -236,6 +236,6 @@ contract DutchAuction is SignatureBouncer, Ownable {
             token.burn(maxTokenSold - soldTokens);
         }
 
-        endTime = now;
+        endTime = block.timestamp;
     }
 }

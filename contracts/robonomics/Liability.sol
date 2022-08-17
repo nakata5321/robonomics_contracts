@@ -41,6 +41,7 @@ contract Liability is ILiability {
         address _sender,
         bytes   calldata _signature
     )
+        override
         external
         returns (bool)
     {
@@ -91,6 +92,7 @@ contract Liability is ILiability {
         address _sender,
         bytes   calldata _signature
     )
+        override
         external
         returns (bool)
     {
@@ -130,6 +132,7 @@ contract Liability is ILiability {
         bool  _success,
         bytes calldata _signature
     )
+        override
         external
         returns (bool)
     {

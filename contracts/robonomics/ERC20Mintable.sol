@@ -9,7 +9,7 @@ import "./MinterRole.sol";
  *
  * At construction, the deployer of the contract is the only minter.
  */
-contract ERC20Mintable is ERC20, MinterRole {
+abstract contract ERC20Mintable is ERC20, MinterRole {
     /**
      * @dev See {ERC20-_mint}.
      *

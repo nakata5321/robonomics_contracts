@@ -30,21 +30,21 @@ contract ENS is AbstractENS {
     /**
      * Returns the address that owns the specified node.
      */
-    function owner(bytes32 _node) public view returns (address) {
+    function owner(bytes32 _node) public override view returns (address) {
         return records[_node].owner;
     }
 
     /**
      * Returns the address of the resolver for the specified node.
      */
-    function resolver(bytes32 _node) public view returns (address) {
+    function resolver(bytes32 _node) public override view returns (address) {
         return records[_node].resolver;
     }
 
     /**
      * Returns the TTL of a node, and any records associated with it.
      */
-    function ttl(bytes32 _node) public view returns (uint64) {
+    function ttl(bytes32 _node) override public view returns (uint64) {
         return records[_node].ttl;
     }
 
@@ -54,7 +54,7 @@ contract ENS is AbstractENS {
      * @param _node The node to transfer ownership of.
      * @param _owner The address of the new owner.
      */
-    function setOwner(bytes32 _node, address _owner) public only_owner(_node) {
+    function setOwner(bytes32 _node, address _owner) override public only_owner(_node) {
         emit Transfer(_node, _owner);
         records[_node].owner = _owner;
     }
@@ -66,7 +66,7 @@ contract ENS is AbstractENS {
      * @param _label The hash of the label specifying the subnode.
      * @param _owner The address of the new owner.
      */
-    function setSubnodeOwner(bytes32 _node, bytes32 _label, address _owner) public only_owner(_node) {
+    function setSubnodeOwner(bytes32 _node, bytes32 _label, address _owner) override public only_owner(_node) {
         bytes32 subnode = keccak256(abi.encodePacked(_node, _label));
         emit NewOwner(_node, _label, _owner);
         records[subnode].owner = _owner;
@@ -77,7 +77,7 @@ contract ENS is AbstractENS {
      * @param _node The node to update.
      * @param _resolver The address of the resolver.
      */
-    function setResolver(bytes32 _node, address _resolver) public only_owner(_node) {
+    function setResolver(bytes32 _node, address _resolver) override public only_owner(_node) {
         emit NewResolver(_node, _resolver);
         records[_node].resolver = _resolver;
     }
@@ -87,7 +87,7 @@ contract ENS is AbstractENS {
      * @param _node The node to update.
      * @param _ttl The TTL in seconds.
      */
-    function setTTL(bytes32 _node, uint64 _ttl) public only_owner(_node) {
+    function setTTL(bytes32 _node, uint64 _ttl) override public only_owner(_node) {
         emit NewTTL(_node, _ttl);
         records[_node].ttl = _ttl;
     }

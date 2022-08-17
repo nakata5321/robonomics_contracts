@@ -34,7 +34,7 @@ import "openzeppelin-solidity/contracts/utils/cryptography/ECDSA.sol";
  * the data in the signature much more complex.
  * See https://ethereum.stackexchange.com/a/50616 for more details.
  */
-contract SignatureBouncer is SignerRole {
+abstract contract SignatureBouncer is SignerRole {
     using ECDSA for bytes32;
 
     // Function selectors are 4 bytes long, as documented in
@@ -43,7 +43,7 @@ contract SignatureBouncer is SignerRole {
     // Signature size is 65 bytes (tightly packed v + r + s), but gets padded to 96 bytes
     uint256 private constant _SIGNATURE_SIZE = 96;
 
-    constructor () internal {
+    constructor ()  {
         // solhint-disable-previous-line no-empty-blocks
     }
 

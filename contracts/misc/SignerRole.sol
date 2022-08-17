@@ -2,7 +2,7 @@ pragma solidity ^0.8.0;
 
 import "../robonomics/Roles.sol";
 
-contract SignerRole {
+abstract contract SignerRole {
     using Roles for Roles.Role;
 
     event SignerAdded(address indexed account);
@@ -10,7 +10,7 @@ contract SignerRole {
 
     Roles.Role private _signers;
 
-    constructor () internal {
+    constructor ()  {
         _addSigner(msg.sender);
     }
 

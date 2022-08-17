@@ -28,7 +28,7 @@ contract Lighthouse is ILighthouse {
      */
     mapping(address => uint256) public indexOf;
 
-    function refill(uint256 _value) external returns (bool) {
+    function refill(uint256 _value) override external returns (bool) {
         xrt.safeTransferFrom(msg.sender, address(this), _value);
 
         if (stakes[msg.sender] == 0) {
@@ -42,7 +42,7 @@ contract Lighthouse is ILighthouse {
         return true;
     }
 
-    function withdraw(uint256 _value) external returns (bool) {
+    function withdraw(uint256 _value) override external returns (bool) {
         require(stakes[msg.sender] >= _value);
 
         stakes[msg.sender] -= _value;
@@ -127,6 +127,7 @@ contract Lighthouse is ILighthouse {
         bytes calldata _demand,
         bytes calldata _offer
     )
+        override
         external
         returns (bool)
     {
@@ -148,6 +149,7 @@ contract Lighthouse is ILighthouse {
         bool _success,
         bytes calldata _signature
     )
+        override
         external
         returns (bool)
     {

@@ -6,7 +6,7 @@ import './ILighthouse.sol';
 /**
  * @title Robonomics liability factory interface
  */
-contract IFactory {
+abstract contract IFactory {
     /**
      * @dev New liability created 
      */

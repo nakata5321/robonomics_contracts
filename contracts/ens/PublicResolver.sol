@@ -47,7 +47,7 @@ contract PublicResolver {
     /**
      * Returns the address associated with an ENS node.
      * @param _node The ENS node to query.
-     * @return The associated address.
+     * @return ret The associated address.
      */
     function addr(bytes32 _node) public view returns (address ret) {
         ret = addresses[_node];
@@ -68,7 +68,7 @@ contract PublicResolver {
      * Note that this resource type is not standardized, and will likely change
      * in future to a resource type based on multihash.
      * @param _node The ENS node to query.
-     * @return The associated content hash.
+     * @return ret The associated content hash.
      */
     function content(bytes32 _node) public view returns (bytes32 ret) {
         ret = hashes[_node];

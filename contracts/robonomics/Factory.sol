@@ -69,7 +69,7 @@ contract Factory is IFactory, SingletonHash {
     /**
      * @dev XRT emission value for utilized gas
      */
-    function wnFromGas(uint256 _gas) public view returns (uint256) {
+    function wnFromGas(uint256 _gas) override public view returns (uint256) {
         // Just return wn=gas*150 when auction isn't finish
         if (auction.finalPrice() == 0)
             return _gas * 150;
@@ -101,6 +101,7 @@ contract Factory is IFactory, SingletonHash {
         uint256 _timeoutInBlocks,
         string  calldata _name
     )
+        override
         external
         returns (ILighthouse lighthouse)
     {
@@ -133,6 +134,7 @@ contract Factory is IFactory, SingletonHash {
         bytes calldata _demand,
         bytes calldata _offer
     )
+        override
         external
         onlyLighthouse
         returns (ILiability liability)
@@ -183,6 +185,7 @@ contract Factory is IFactory, SingletonHash {
         ILiability _liability,
         uint256 _gas
     )
+        override
         external
         onlyLighthouse
         gasPriceEstimate
@@ -198,6 +201,7 @@ contract Factory is IFactory, SingletonHash {
         ILiability _liability,
         uint256 _gas
     )
+        override
         external
         onlyLighthouse
         gasPriceEstimate

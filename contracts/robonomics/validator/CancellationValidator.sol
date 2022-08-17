@@ -30,7 +30,7 @@ contract CancellationValidator is IValidator {
         emit CancellationRequest(_liability);
     }
 
-    function isValidator(address _validator) external returns (bool) {
+    function isValidator(address _validator) override external returns (bool) {
         uint256 requestStartBlock = cancellationRequest[msg.sender];
         bool waitingDone = requestStartBlock > 0
                         && block.number - requestStartBlock > waitingPeriod;

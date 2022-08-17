@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 /**
  * @title Standard liability smart contract interface
  */
-contract ILiability {
+abstract contract ILiability {
     /**
      * @dev Liability termination signal
      */
