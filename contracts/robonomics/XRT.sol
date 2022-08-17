@@ -8,7 +8,7 @@ abstract contract XRT is ERC20Mintable, ERC20Burnable {
     string private _symbol;
     uint8 private _decimals;
 
-    constructor(uint256 _initial_supply) public {
+    constructor(uint256 _initial_supply)  {
         _name = "Robonomics";
         _symbol = "XRT";
         _decimals = 9;

@@ -13,7 +13,7 @@ contract Lighthouse is ILighthouse {
     XRT      public xrt;
 
     function setup(XRT _xrt, uint256 _minimalStake, uint256 _timeoutInBlocks) external returns (bool) {
-        require(factory == IFactory(0) && _minimalStake > 0 && _timeoutInBlocks > 0);
+        require(factory == IFactory(address(0)) && _minimalStake > 0 && _timeoutInBlocks > 0);
 
         minimalStake    = _minimalStake;
         timeoutInBlocks = _timeoutInBlocks;
@@ -59,7 +59,7 @@ contract Lighthouse is ILighthouse {
             if (senderIndex < lastIndex)
                 providers[senderIndex] = providers[lastIndex];
 
-            providers.length -= 1;
+            providers.pop();
             indexOf[msg.sender] = 0;
 
             emit Offline(msg.sender);
@@ -138,7 +138,7 @@ contract Lighthouse is ILighthouse {
         quotedTransaction();
 
         ILiability liability = factory.createLiability(_demand, _offer);
-        require(liability != ILiability(0));
+        require(liability != ILiability(address(0)));
         require(factory.liabilityCreated(liability, gas - gasleft()));
         return true;
     }

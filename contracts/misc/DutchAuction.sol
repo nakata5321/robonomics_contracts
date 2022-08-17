@@ -100,7 +100,7 @@ contract DutchAuction is SignatureBouncer, Ownable {
         atStage(Stages.AuctionDeployed)
     {
         // Validate argument
-        require(_token != ERC20Burnable(0) && _ambix != address(0));
+        require(_token != ERC20Burnable(address(0)) && _ambix != address(0));
 
         token = _token;
         ambix = _ambix;
@@ -157,7 +157,7 @@ contract DutchAuction is SignatureBouncer, Ownable {
         require(msg.value > 0);
         amount = msg.value;
 
-        address payable receiver = msg.sender;
+        address payable receiver = payable(msg.sender);
 
         // Prevent that more than 90% of tokens are sold. Only relevant if cap not reached.
         uint maxWei = maxTokenSold * calcTokenPrice() / 10**9 - totalReceived;
